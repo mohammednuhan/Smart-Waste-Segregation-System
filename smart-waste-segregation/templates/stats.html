@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats - EcoSort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="fa-solid fa-recycle"></i> EcoSort</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <i class="fa-solid fa-bars" style="color: var(--gray-600);"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/education"><i class="fa-solid fa-book"></i> Learn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recycling"><i class="fa-solid fa-arrows-spin"></i> Recycling</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/stats"><i class="fa-solid fa-chart-simple"></i> Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero" style="padding: 3rem 0 4rem;">
+        <div class="container text-center">
+            <h1>Classification Stats</h1>
+            <p>Track your waste classifications and environmental impact</p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-md-3 col-6 mb-3">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: var(--blue-600);">{{ total }}</div>
+                    <div class="stat-label"><i class="fa-solid fa-cubes"></i> Total Items</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: var(--green-500);">{{ category_counts.get('organic', 0) }}</div>
+                    <div class="stat-label"><i class="fa-solid fa-seedling"></i> Organic</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: var(--blue-500);">{{ category_counts.get('recyclable', 0) }}</div>
+                    <div class="stat-label"><i class="fa-solid fa-recycle"></i> Recyclable</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: var(--red-500);">{{ category_counts.get('hazardous', 0) }}</div>
+                    <div class="stat-label"><i class="fa-solid fa-radiation"></i> Hazardous</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-7 mb-4">
+                <div class="card">
+                    <div class="card-header"><h5><i class="fa-solid fa-clock-rotate-left" style="color: var(--blue-600);"></i> Recent Classifications</h5></div>
+                    <div class="card-body">
+                        {% if recent_items %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead><tr><th>Item</th><th>Category</th><th>Date</th></tr></thead>
+                                <tbody>
+                                    {% for item in recent_items %}
+                                    <tr>
+                                        <td><i class="fa-solid fa-cube" style="color: var(--blue-500); margin-right: 0.5rem;"></i>{{ item[0] }}</td>
+                                        <td><span class="badge {% if item[1] == 'organic' %}badge-success{% elif item[1] == 'recyclable' %}badge-info{% elif item[1] == 'hazardous' %}badge-danger{% else %}badge-warning{% endif %}">{{ item[1].replace('_', ' ').title() }}</span></td>
+                                        <td style="color: var(--gray-500);">{{ item[2][:10] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <div class="text-center py-4">
+                            <i class="fa-solid fa-inbox" style="font-size: 2.5rem; color: var(--gray-300);"></i>
+                            <p style="color: var(--gray-500); margin-top: 1rem;">No items classified yet.</p>
+                            <a href="/" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Start Classifying</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 mb-4">
+                <div class="card">
+                    <div class="card-header"><h5><i class="fa-solid fa-fire" style="color: var(--red-500);"></i> Most Searched</h5></div>
+                    <div class="card-body">
+                        {% if common_items %}
+                        {% for item in common_items %}
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span style="font-size: 0.9rem;">{{ item[0] }}</span>
+                                <span class="badge badge-info">{{ item[1] }}</span>
+                            </div>
+                            <div class="progress"><div class="progress-bar" style="width: {{ (item[1] / total * 100) if total > 0 else 0 }}%"></div></div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="text-center py-4">
+                            <i class="fa-solid fa-chart-bar" style="font-size: 2.5rem; color: var(--gray-300);"></i>
+                            <p style="color: var(--gray-500); margin-top: 1rem;">No data yet.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="card mt-3" style="background: var(--green-50); border-color: var(--green-500);">
+                    <div class="card-body text-center">
+                        <i class="fa-solid fa-earth-americas" style="font-size: 2rem; color: var(--green-500);"></i>
+                        <h6 style="margin-top: 0.5rem;">You're Making a Difference!</h6>
+                        <p style="font-size: 0.85rem; color: var(--gray-600); margin: 0;">Every item you classify helps reduce landfill waste.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">EcoSort | Conservation of Natural Resources | 2026</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
