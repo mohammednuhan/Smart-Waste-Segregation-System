@@ -86,6 +86,34 @@ def recycling():
 def about():
     return render_template('about.html')
 
+@app.route('/readme')
+@app.route('/items')
+@app.route('/database')
+def item_list():
+    categories = []
+    for cat_key, cat_data in WASTE_DATABASE.items():
+        items = []
+        for item_key, item_data in cat_data["items"].items():
+            items.append({
+                "name": item_key,
+                "description": item_data["description"],
+                "recycling_method": item_data["recycling_method"]
+            })
+        categories.append({
+            "key": cat_key,
+            "name": cat_data["name"],
+            "color": cat_data["color"],
+            "icon": cat_data.get("icon", "circle-question"),
+            "bin_color": cat_data.get("bin_color", ""),
+            "count": len(items),
+            "item_list": sorted(items, key=lambda x: x["name"])
+        })
+    return render_template('readme.html', categories=categories, total=sum(c["count"] for c in categories))
+
+@app.route('/presentation')
+def presentation():
+    return render_template('presentation.html')
+
 @app.route('/stats')
 def stats():
     try:

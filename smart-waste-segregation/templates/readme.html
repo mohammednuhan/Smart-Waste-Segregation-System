@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Item Database | EcoSort{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding: 80px 0;">
+    <div class="hero-bubble b1"></div>
+    <div class="hero-bubble b2"></div>
+    <div class="container text-center position-relative">
+        <span class="eyebrow"><i class="fa-solid fa-database"></i> Internal · Item Database</span>
+        <h1>All {{ total }} Items.<br><span class="grad">The Full Classification Database.</span></h1>
+        <p class="hero-lead">Every item EcoSort can classify — grouped by category. This page is hidden from navigation and only reachable by direct URL.</p>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 40px;">
+    <div class="container">
+        <!-- Search box -->
+        <div class="classifier" style="margin-top: 0;">
+            <div class="classifier-label">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search the item database</span>
+            </div>
+            <div class="search-wrap">
+                <div class="search-input-wrap">
+                    <i class="fa-solid fa-filter"></i>
+                    <input type="text" id="itemSearch" placeholder="Filter items… e.g. bottle, paper, oil, battery" aria-label="Filter items">
+                </div>
+            </div>
+        </div>
+
+        {% for cat in categories %}
+        <div class="section-head" style="margin: 56px auto 26px; text-align:left; max-width:none;">
+            <span class="tag" style="background: {{ cat.color }}18; color: {{ cat.color }};">
+                <i class="fa-solid fa-{{ cat.icon }}"></i> {{ cat.bin_color }}
+            </span>
+            <h2 style="font-size: 1.6rem;"><span style="color: {{ cat.color }};">{{ cat.name }}</span>
+                <span style="font-size:0.9rem; color:var(--slate-400); font-weight:600;"> · {{ cat.count }} items</span>
+            </h2>
+        </div>
+
+        <div class="row g-3">
+            {% for item in cat.item_list %}
+            <div class="col-md-6 col-lg-4">
+                <div class="info-card" data-item-name="{{ item.name }}">
+                    <div class="info-card-body" style="padding: 16px 20px;">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                            <span class="step-dot" style="background: {{ cat.color }}18; color: {{ cat.color }};">
+                                <i class="fa-solid fa-{{ cat.icon }}"></i>
+                            </span>
+                            <h6 style="font-size:0.95rem; font-weight:700; margin:0; text-transform:capitalize;">{{ item.name }}</h6>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--slate-600); line-height:1.5; margin-bottom:6px;">{{ item.description }}</p>
+                        <p style="font-size:0.76rem; color:var(--slate-400); margin:0;"><i class="fa-solid fa-arrows-spin"></i> {{ item.recycling_method }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <p style="text-align:center; color:var(--slate-400); font-size:0.82rem; margin-top:40px;">
+            <i class="fa-solid fa-shield-halved"></i> Internal reference page — total {{ total }} items across {{ categories|length }} categories.
+        </p>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const search = document.getElementById('itemSearch');
+        const cards = document.querySelectorAll('[data-item-name]');
+
+        search.addEventListener('input', function () {
+            const q = search.value.trim().toLowerCase();
+            cards.forEach(function (card) {
+                const name = card.getAttribute('data-item-name').toLowerCase();
+                card.closest('.col-md-6, .col-lg-4').style.display = (!q || name.includes(q)) ? '' : 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}

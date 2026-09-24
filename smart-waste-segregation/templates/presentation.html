@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+{% block title %}Presentation Script | EcoSort{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding: 70px 0;">
+    <div class="hero-bubble b1"></div>
+    <div class="hero-bubble b2"></div>
+    <div class="container text-center position-relative">
+        <span class="eyebrow"><i class="fa-solid fa-person-chalkboard"></i> Internal · Presentation Guide</span>
+        <h1>Presentation Script.<br><span class="grad">Say This. Click That.</span></h1>
+        <p class="hero-lead">A word-for-word presentation walkthrough for "Conservation of Natural Resources" — including the live demo, expected questions and answers.</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+            <a href="/#classify" class="btn-white"><i class="fa-solid fa-play"></i> Same Page Demo — Home</a>
+            <a href="/readme" class="btn-eco-outline" style="border-color: rgba(255,255,255,0.3); color:#fff;"><i class="fa-solid fa-database"></i> Item Database</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 30px;">
+    <div class="container">
+
+        <!-- QUICK FACTS STRIP -->
+        <div class="row g-3 mb-5">
+            <div class="col-lg-3 col-6"><div class="stat-card text-center">
+                <div class="stat-num">2.5</div><div class="stat-label">Minutes — full presentation</div>
+            </div></div>
+            <div class="col-lg-3 col-6"><div class="stat-card text-center">
+                <div class="stat-num">3</div><div class="stat-label">Live demo searches to perform</div>
+            </div></div>
+            <div class="col-lg-3 col-6"><div class="stat-card text-center">
+                <div class="stat-num">5</div><div class="stat-label">Pages to open in the navbar</div>
+            </div></div>
+            <div class="col-lg-3 col-6"><div class="stat-card text-center">
+                <div class="stat-num">6</div><div class="stat-label">Expected teacher questions</div>
+            </div></div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SCRIPT PART 1
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#10b981;"><i class="fa-solid fa-signal"></i></div>
+                <h5>PART 1 — Introduction & Problem (30 sec)</h5>
+            </div>
+            <div class="info-card-body">
+                <div style="background:var(--green-50); border-left:4px solid var(--green-500); border-radius:12px; padding:16px 18px; margin-bottom:14px;">
+                    <p style="margin:0; font-size:0.95rem; line-height:1.7;"><strong>🗣️ Say:</strong> "Good morning ma'am. Our project is <strong>EcoSort — a Smart Waste Segregation and Recycling System</strong>, built for the topic Conservation of Natural Resources.</p>
+                    <p style="margin:8px 0 0; font-size:0.95rem; line-height:1.7;">India generates about <strong>62 million tonnes of waste every year</strong>, but most of it isn't segregated properly. People often don't know which bin an item belongs to — so recyclable waste gets polluted, and landfills keep filling up. We built EcoSort to solve exactly this confusion, using technology."</p>
+                </div>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-circle-check"></i><div><strong>Point to nothing yet</strong> — just stand at the home page.</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div><strong>Hook:</strong> "Instead of guessing, users can now simply type an item and get the correct answer instantly."</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SCRIPT PART 2
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#3b82f6;"><i class="fa-solid fa-clapperboard"></i></div>
+                <h5>PART 2 — THE LIVE DEMO (60 sec) ⭐ Most Important</h5>
+            </div>
+            <div class="info-card-body">
+                <p style="font-size:0.9rem; color:var(--slate-600); margin-bottom:14px;">This is the most impressive part. Do these three searches slowly, reading results aloud.</p>
+
+                <div style="background:var(--green-50); border-left:4px solid #10b981; border-radius:12px; padding:14px 18px; margin-bottom:14px;">
+                    <p style="margin:0; font-size:0.9rem; font-weight:700; color:#059669;"><i class="fa-solid fa-1"></i> SEARCH #1 — "banana peel"</p>
+                    <p style="margin:6px 0 0; font-size:0.92rem; line-height:1.7;">Type <strong>banana peel</strong> slowly. Pause so the <strong>live suggestion</strong> pops up, then press Enter.<br>
+                    <strong>🗣️ Say:</strong> "Here you can see the live search suggestion working in real time. EcoSort classified it as <strong>Organic / Wet Waste</strong>, Green Bin. It tells me to compost it, that it decomposes in 2–3 weeks, and that it's rich in potassium and phosphorus."</p>
+                </div>
+
+                <div style="background:#eff6ff; border-left:4px solid #3b82f6; border-radius:12px; padding:14px 18px; margin-bottom:14px;">
+                    <p style="margin:0; font-size:0.9rem; font-weight:700; color:#2563eb;"><i class="fa-solid fa-2"></i> SEARCH #2 — "battery"</p>
+                    <p style="margin:6px 0 0; font-size:0.92rem; line-height:1.7;">Clear and type <strong>battery</strong>, press Enter.<br>
+                    <strong>🗣️ Say:</strong> "Now a hazardous item. EcoSort correctly sends it to the <strong>Red Bin — special collection</strong>. It warns that batteries contain toxic chemicals like mercury and lead, and tells users never to mix them with regular waste. This prevents contamination of soil and groundwater."</p>
+                </div>
+
+                <div style="background:#fff7ed; border-left:4px solid #f59e0b; border-radius:12px; padding:14px 18px; margin-bottom:14px;">
+                    <p style="margin:0; font-size:0.9rem; font-weight:700; color:#d97706;"><i class="fa-solid fa-3"></i> SEARCH #3 — "plastic bottle"</p>
+                    <p style="margin:6px 0 0; font-size:0.92rem; line-height:1.7;">Clear and type <strong>plastic bottle</strong>, press Enter.<br>
+                    <strong>🗣️ Say:</strong> "Plastic bottle — Recyclable, <strong>Blue Bin</strong>. Notice it shows the environmental impact: it takes <strong>450+ years</strong> to decompose, but recycling it turns it into polyester fibre. So recycling isn't just convenient, it's essential."</p>
+                </div>
+
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-circle-check"></i><div><strong>After the 3 searches point out:</strong> "Each result shows the correct bin colour, how to dispose it, decomposition time, environmental impact, and step-by-step recycling process."</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div><strong>Mention coverage:</strong> "The system knows <strong>85+ everyday items</strong> across <strong>5 categories</strong> — and the result includes a 'bin badge' so even colour-coded bins are clear."</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SCRIPT PART 3
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#8b5cf6;"><i class="fa-solid fa-compass"></i></div>
+                <h5>PART 3 — Tour the Other Pages (40 sec)</h5>
+            </div>
+            <div class="info-card-body">
+                <p style="font-size:0.9rem; color:var(--slate-600); margin-bottom:14px;">Click each nav link. Keep explanations to one sentence each.</p>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div style="background:var(--purple-50); border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+                            <p style="margin:0; font-size:0.9rem; font-weight:700; color:#7c3aed;"><i class="fa-solid fa-book-open"></i> LEARN</p>
+                            <p style="margin:6px 0 0; font-size:0.9rem; line-height:1.6;"><strong>Say:</strong> "The Learn page explains the government's Solid Waste Management Rules 2016, the different types of waste, and the problems caused by wrong disposal — like microplastics and methane from landfills."</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#f1f5f9; border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+                            <p style="margin:0; font-size:0.9rem; font-weight:700; color:#475569;"><i class="fa-solid fa-arrows-spin"></i> RECYCLING</p>
+                            <p style="margin:6px 0 0; font-size:0.9rem; line-height:1.6;"><strong>Say:</strong> "The Recycling page shows the step-by-step journey of six materials — paper, plastic, glass, metal, e-waste and composting — and ends with the waste management hierarchy, where prevention is better than recycling."</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#fef3c7; border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+                            <p style="margin:0; font-size:0.9rem; font-weight:700; color:#d97706;"><i class="fa-solid fa-chart-column"></i> STATISTICS</p>
+                            <p style="margin:6px 0 0; font-size:0.9rem; line-height:1.6;"><strong>Say:</strong> "This is our live analytics dashboard. Every classification is stored in a database, so we can show real usage — the donut chart splits categories, and it lists the most searched items."</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:#f0fdf4; border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+                            <p style="margin:0; font-size:0.9rem; font-weight:700; color:#10b981;"><i class="fa-solid fa-circle-info"></i> ABOUT</p>
+                            <p style="margin:6px 0 0; font-size:0.9rem; line-height:1.6;"><strong>Say:</strong> "The About page covers the objective, problem statement, technology stack and future enhancements like image recognition and machine learning."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             SCRIPT PART 4
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#f59e0b;"><i class="fa-solid fa-flag-checkered"></i></div>
+                <h5>PART 4 — Tech & Closing (20 sec)</h5>
+            </div>
+            <div class="info-card-body">
+                <div style="background:var(--green-50); border-left:4px solid var(--green-500); border-radius:12px; padding:16px 18px; margin-bottom:14px;">
+                    <p style="margin:0; font-size:0.95rem; line-height:1.7;"><strong>🗣️ Say:</strong> "Under the hood, EcoSort is built with <strong>Python and Flask</strong> on the backend, <strong>SQLite</strong> for storing classification history and statistics, and a responsive frontend with HTML, CSS and JavaScript. It's designed to work on a phone, right in the kitchen.</p>
+                    <p style="margin:8px 0 0; font-size:0.95rem; line-height:1.7;">In the future, we plan to add image recognition, machine-learning accuracy improvements, user accounts, and integration with local waste collection schedules. Thank you, ma'am — I'd be happy to take any questions."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             Q&A
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#ef4444;"><i class="fa-solid fa-circle-question"></i></div>
+                <h5>Expected Questions & Answers ⭐ Read Once Before Presenting</h5>
+            </div>
+            <div class="info-card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> How does the classification actually work?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "When you type an item, the backend searches a database of 85+ items. It looks for an exact match first, then a partial match — for example 'bottle' can match both plastic bottle and glass bottle. On a match, it returns the full disposal guide with bin colour, decomposition time and recycling process."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> What happens if an item is not in the database?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "It shows a friendly 'not found' message with helpful tips — like trying simpler terms — so the user is never left confused. We can demonstrate that too."</p>
+                                    <p style="font-size:0.78rem; margin:8px 0 0; color:var(--slate-400);">💡 If asked, demo typing "random junk" on the home page.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> What data do you store?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "We store the item name, its category, the recommendation we gave, and the timestamp — in a SQLite database. We use this only for the statistics dashboard, no personal data."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> Is this relevant to India's waste rules?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "Yes. The categories follow the CPCB Solid Waste Management Rules 2016, which require households to segregate wet, dry and hazardous waste at the source. EcoSort teaches people exactly how to do that."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> Why is source segregation important?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "Up to 80% of waste could be recycled or composted if it's segregated properly. Mixed waste is very hard to recycle — one contaminated bin can spoil an entire batch. Segregation at home is the cheapest, most effective step."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="process-card">
+                            <div class="process-card-head" style="font-size:0.9rem;"><i class="fa-solid fa-question"></i> What are the future enhancements?</div>
+                            <div class="process-list">
+                                <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px;">
+                                    <p style="font-size:0.85rem; margin:0; line-height:1.6;"><strong>Answer:</strong> "Image recognition to identify waste by photo, machine learning for better accuracy and more items, user accounts for personal tracking, local collection schedule integration, and multi-language support."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------------------
+             HIDDEN URLS
+        -->
+        <div class="info-card mb-4">
+            <div class="info-card-head">
+                <div class="ic-icon" style="background:#475569;"><i class="fa-solid fa-key"></i></div>
+                <h5>Hidden URLs (not visible in the menu — use during demo if needed)</h5>
+            </div>
+            <div class="info-card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px; text-align:center;">
+                            <p style="margin:0; font-weight:700; font-size:0.9rem;">Item Database</p>
+                            <p style="margin:4px 0 0; font-size:0.82rem; color:var(--blue-600); word-break:break-all;">http://localhost:5000/readme<br>(also /items and /database)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px; text-align:center;">
+                            <p style="margin:0; font-weight:700; font-size:0.9rem;">This Presentation Script</p>
+                            <p style="margin:4px 0 0; font-size:0.82rem; color:var(--blue-600); word-break:break-all;">http://localhost:5000/presentation</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="result-item full" style="border:1px solid var(--slate-100); border-radius:12px; text-align:center;">
+                            <p style="margin:0; font-weight:700; font-size:0.9rem;">Search API</p>
+                            <p style="margin:4px 0 0; font-size:0.82rem; color:var(--blue-600); word-break:break-all;">http://localhost:5000/api/search?q=plastic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="cta-band" style="background: radial-gradient(900px 400px at 50% -10%, rgba(16,185,129,0.35), transparent 60%), linear-gradient(135deg, #052e16, #064e3b 55%, #065f46);">
+            <h2>Pre-Presentation Checklist</h2>
+            <ul class="info-list" style="max-width:520px; margin:0 auto; text-align:left; color:rgba(255,255,255,0.85);">
+                <li style="border-color: rgba(255,255,255,0.15);"><i class="fa-solid fa-circle-check"></i><div>Start the server: <strong style="color:#fff;">python app.py</strong></div></li>
+                <li style="border-color: rgba(255,255,255,0.15);"><i class="fa-solid fa-circle-check"></i><div>Open <strong style="color:#fff;">http://localhost:5000</strong> before the demo</div></li>
+                <li style="border-color: rgba(255,255,255,0.15);"><i class="fa-solid fa-circle-check"></i><div>Test the 3 demo searches so they succeed live</div></li>
+                <li style="border-color: rgba(255,255,255,0.15);"><i class="fa-solid fa-circle-check"></i><div>Have this script open beside you for reference</div></li>
+                <li style="border-color: rgba(255,255,255,0.15);"><i class="fa-solid fa-circle-check"></i><div>Smile, speak slowly, and let the demo speak for itself</div></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
