@@ -1,260 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn - EcoSort</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/"><i class="fa-solid fa-recycle"></i> EcoSort</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <i class="fa-solid fa-bars" style="color: var(--gray-600);"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/education"><i class="fa-solid fa-book"></i> Learn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/recycling"><i class="fa-solid fa-arrows-spin"></i> Recycling</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/stats"><i class="fa-solid fa-chart-simple"></i> Stats</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends "base.html" %}
+{% block title %}Learn — Waste Management Knowledge | EcoSort{% endblock %}
 
-    <div class="hero" style="padding: 3rem 0 4rem;">
-        <div class="container text-center">
-            <h1>Waste Management & Conservation</h1>
-            <p>Learn how proper waste management helps conserve natural resources</p>
-        </div>
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding: 90px 0;">
+    <div class="hero-bubble b1"></div>
+    <div class="hero-bubble b2"></div>
+    <div class="container text-center position-relative">
+        <span class="eyebrow"><i class="fa-solid fa-book-open"></i> Learn</span>
+        <h1>Understand Waste.<br><span class="grad">Protect Our Resources.</span></h1>
+        <p class="hero-lead">Knowledge is the first step to conservation. Explore India's waste rules, the different types of waste and how you can make a difference.</p>
     </div>
+</section>
 
-    <div class="container mt-5">
-        <!-- SWM Rules -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-gavel" style="color: var(--blue-600);"></i> Solid Waste Management Rules 2016</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fa-solid fa-users" style="color: var(--blue-600);"></i> Who is Responsible?</h6>
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-house" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Households:</strong> Must segregate waste into 3 bins
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-building" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Local Bodies:</strong> Collection, transportation, processing
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-store" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Commercial:</strong> Must ensure proper waste management
-                            </li>
-                            <li style="padding: 0.5rem 0;">
-                                <i class="fa-solid fa-hand-holding-heart" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Waste Pickers:</strong> Integrated into formal system
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fa-solid fa-list-check" style="color: var(--blue-600);"></i> Key Features</h6>
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-trash-can" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Segregation:</strong> 3 categories: wet, dry, hazardous
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-industry" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Producer Responsibility:</strong> Companies take back packaging
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-money-bill" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Penalties:</strong> Fines for improper disposal
-                            </li>
-                            <li style="padding: 0.5rem 0;">
-                                <i class="fa-solid fa-leaf" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                <strong>Composting:</strong> Mandatory for housing societies
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!-- ===== SWM RULES ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-gavel"></i> Policy</span>
+            <h2>Solid Waste Management Rules 2016</h2>
+            <p>India's national framework for responsible waste handling — and why segregation starts at home.</p>
         </div>
-
-        <!-- Waste Types -->
-        <h2 class="section-title text-center mb-4">Types of Waste</h2>
-        <div class="row mb-5">
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="fa-solid fa-seedling" style="color: var(--green-500);"></i> Organic / Wet Waste</h5>
-                        <p style="font-size: 0.9rem;">Biodegradable waste from kitchens and gardens.</p>
-                        <strong style="font-size: 0.85rem;">Examples:</strong>
-                        <ul style="font-size: 0.85rem;">
-                            <li>Vegetable peels, fruit scraps, food leftovers</li>
-                            <li>Tea leaves, coffee grounds, egg shells</li>
-                            <li>Garden waste, leaves, flowers</li>
-                        </ul>
-                        <div class="alert alert-success mt-2">
-                            <strong>Handle:</strong> Compost at home or put in green bin.
-                        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #3b82f6;"><i class="fa-solid fa-users"></i></div>
+                        <h5>Who Is Responsible?</h5>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="fa-solid fa-recycle" style="color: var(--blue-500);"></i> Recyclable / Dry Waste</h5>
-                        <p style="font-size: 0.9rem;">Non-biodegradable waste that can be recycled.</p>
-                        <strong style="font-size: 0.85rem;">Examples:</strong>
-                        <ul style="font-size: 0.85rem;">
-                            <li>Paper, cardboard, notebooks</li>
-                            <li>Plastic bottles, containers, bags</li>
-                            <li>Glass bottles, metal cans</li>
-                        </ul>
-                        <div class="alert alert-info mt-2">
-                            <strong>Handle:</strong> Clean and put in blue bin.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="fa-solid fa-radiation" style="color: var(--red-500);"></i> Hazardous Waste</h5>
-                        <p style="font-size: 0.9rem;">Waste containing toxic substances.</p>
-                        <strong style="font-size: 0.85rem;">Examples:</strong>
-                        <ul style="font-size: 0.85rem;">
-                            <li>Batteries, e-waste, phones</li>
-                            <li>Medicines, syringes, medical waste</li>
-                            <li>Paint, chemicals, CFL bulbs</li>
-                        </ul>
-                        <div class="alert alert-danger mt-2">
-                            <strong>Handle:</strong> NEVER mix with other waste. Take to collection points.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="fa-solid fa-triangle-exclamation" style="color: var(--orange-500);"></i> Domestic Hazardous</h5>
-                        <p style="font-size: 0.9rem;">Common hazardous items in households.</p>
-                        <strong style="font-size: 0.85rem;">Examples:</strong>
-                        <ul style="font-size: 0.85rem;">
-                            <li>Used cooking oil, motor oil</li>
-                            <li>Empty detergent, shampoo bottles</li>
-                            <li>Mosquito coils, insect repellents</li>
-                        </ul>
-                        <div class="alert alert-warning mt-2">
-                            <strong>Handle:</strong> Rinse containers. Dispose chemicals at facilities.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Impact -->
-        <div class="row mb-5">
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-header" style="background: var(--red-50);"><h5 style="color: var(--red-600);"><i class="fa-solid fa-skull-crossbones"></i> Problems</h5></div>
-                    <div class="card-body">
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-fire" style="color: var(--red-500); margin-right: 0.5rem;"></i>
-                                Landfills produce methane, 25x more potent than CO2
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-water" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                Microplastics found in drinking water and human blood
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-smog" style="color: var(--gray-500); margin-right: 0.5rem;"></i>
-                                Open burning releases toxic chemicals
-                            </li>
-                            <li style="padding: 0.5rem 0;">
-                                <i class="fa-solid fa-fish" style="color: var(--blue-500); margin-right: 0.5rem;"></i>
-                                1 million seabirds die yearly from plastic
-                            </li>
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-house"></i><div><strong>Households</strong> — must segregate waste into wet, dry and hazardous bins.</div></li>
+                            <li><i class="fa-solid fa-building"></i><div><strong>Local Bodies</strong> — responsible for collection, transport and processing.</div></li>
+                            <li><i class="fa-solid fa-store"></i><div><strong>Commercial Establishments</strong> — must manage their waste responsibly.</div></li>
+                            <li><i class="fa-solid fa-hand-holding-heart"></i><div><strong>Waste Pickers</strong> — integrated into the formal waste system.</div></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-header" style="background: var(--green-50);"><h5 style="color: var(--green-700);"><i class="fa-solid fa-lightbulb"></i> Solutions</h5></div>
-                    <div class="card-body">
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-check-circle" style="color: var(--green-500); margin-right: 0.5rem;"></i>
-                                Segregate waste at source
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-check-circle" style="color: var(--green-500); margin-right: 0.5rem;"></i>
-                                Composting reduces wet waste by 80%
-                            </li>
-                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100);">
-                                <i class="fa-solid fa-check-circle" style="color: var(--green-500); margin-right: 0.5rem;"></i>
-                                Recycling 1 can saves energy for 3 hours of TV
-                            </li>
-                            <li style="padding: 0.5rem 0;">
-                                <i class="fa-solid fa-check-circle" style="color: var(--green-500); margin-right: 0.5rem;"></i>
-                                E-waste recycling recovers gold, silver, copper
-                            </li>
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #10b981;"><i class="fa-solid fa-list-check"></i></div>
+                        <h5>Key Features</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-trash-can"></i><div><strong>Source Segregation</strong> — wet, dry and hazardous separated at the home.</div></li>
+                            <li><i class="fa-solid fa-industry"></i><div><strong>Producer Responsibility</strong> — companies take back their packaging.</div></li>
+                            <li><i class="fa-solid fa-money-bill-wave"></i><div><strong>Penalties</strong> — fines for improper disposal of waste.</div></li>
+                            <li><i class="fa-solid fa-leaf"></i><div><strong>Mandatory Composting</strong> — for bulk waste generators and societies.</div></li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- What You Can Do -->
-        <div class="card mb-5">
-            <div class="card-body p-4">
-                <h4 class="text-center mb-4"><i class="fa-solid fa-hand-holding-heart"></i> What Can You Do?</h4>
-                <div class="row text-center">
-                    <div class="col-md-3 col-6 mb-3">
-                        <div style="width: 60px; height: 60px; margin: 0 auto; background: var(--blue-50); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-trash-can" style="font-size: 1.5rem; color: var(--blue-600);"></i>
-                        </div>
-                        <h6 style="margin-top: 0.75rem;">Segregate</h6>
-                        <p style="font-size: 0.8rem; color: var(--gray-500);">Separate waste into wet, dry, and hazardous</p>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div style="width: 60px; height: 60px; margin: 0 auto; background: var(--green-50); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-seedling" style="font-size: 1.5rem; color: var(--green-500);"></i>
-                        </div>
-                        <h6 style="margin-top: 0.75rem;">Compost</h6>
-                        <p style="font-size: 0.8rem; color: var(--gray-500);">Start composting wet waste at home</p>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div style="width: 60px; height: 60px; margin: 0 auto; background: var(--orange-50); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-bullhorn" style="font-size: 1.5rem; color: var(--orange-500);"></i>
-                        </div>
-                        <h6 style="margin-top: 0.75rem;">Spread Awareness</h6>
-                        <p style="font-size: 0.8rem; color: var(--gray-500);">Teach others about proper disposal</p>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div style="width: 60px; height: 60px; margin: 0 auto; background: var(--purple-50); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fa-solid fa-handshake" style="font-size: 1.5rem; color: var(--purple-500);"></i>
-                        </div>
-                        <h6 style="margin-top: 0.75rem;">Participate</h6>
-                        <p style="font-size: 0.8rem; color: var(--gray-500);">Join local clean-up drives</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-bottom">EcoSort | Conservation of Natural Resources | 2026</div>
+<!-- ===== TYPES OF WASTE ===== -->
+<section class="section alt">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-shapes"></i> Types of Waste</span>
+            <h2>Knowing the Difference Changes Everything</h2>
+            <p>Every waste type has a different lifecycle — and a different correct destination.</p>
         </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #10b981;"><i class="fa-solid fa-seedling"></i></div>
+                        <h5>Organic / Wet</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Biodegradable waste from kitchens and gardens. The perfect raw material for compost.</p>
+                        <div class="tip green" style="margin:12px 0 0; padding:10px 13px;"><i class="fa-solid fa-circle-check"></i><span>Compost at home or use the <strong>Green bin</strong>.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #3b82f6;"><i class="fa-solid fa-recycle"></i></div>
+                        <h5>Recyclable / Dry</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Paper, plastic, glass and metals. Non-biodegradable, but highly valuable when clean.</p>
+                        <div class="tip green" style="margin:12px 0 0; padding:10px 13px;"><i class="fa-solid fa-circle-check"></i><span>Clean it and use the <strong>Blue bin</strong>.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #ef4444;"><i class="fa-solid fa-radiation"></i></div>
+                        <h5>Hazardous</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Batteries, e-waste, medicines and chemicals. Toxic to both people and the planet.</p>
+                        <div class="tip danger" style="margin:12px 0 0; padding:10px 13px;"><i class="fa-solid fa-triangle-exclamation"></i><span>Never mix — use <strong>special collection</strong> points.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #f59e0b;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h5>Domestic Hazardous</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Everyday chemicals — cooking oil, detergents, repellents. Common yet still dangerous.</p>
+                        <div class="tip warn" style="margin:12px 0 0; padding:10px 13px;"><i class="fa-solid fa-circle-exclamation"></i><span>Rinse containers & use <strong>safe disposal</strong>.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROBLEMS & SOLUTIONS ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-scale-balanced"></i> Problems & Solutions</span>
+            <h2>The Price of Careless Disposal</h2>
+            <p>Waste doesn't disappear when it leaves your home — it goes somewhere. The question is whether that's a landfill or a new life.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #ef4444;"><i class="fa-solid fa-skull-crossbones"></i></div>
+                        <h5>The Problems</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-fire"></i><div>Landfills release <strong>methane — 25x more potent</strong> than CO₂.</div></li>
+                            <li><i class="fa-solid fa-droplet"></i><div>Microplastics found in <strong>drinking water & human blood</strong>.</div></li>
+                            <li><i class="fa-solid fa-smog"></i><div>Open burning releases <strong>toxic chemicals</strong> into the air.</div></li>
+                            <li><i class="fa-solid fa-fish"></i><div><strong>1 million seabirds</strong> die from plastic every year.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background: #10b981;"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h5>The Solutions</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-circle-check"></i><div><strong>Segregate at source</strong> — it costs nothing and solves most of the problem.</div></li>
+                            <li><i class="fa-solid fa-circle-check"></i><div>Composting reduces wet waste by up to <strong>80%</strong>.</div></li>
+                            <li><i class="fa-solid fa-circle-check"></i><div>Recycling one can <strong>powers a TV for 3 hours</strong>.</div></li>
+                            <li><i class="fa-solid fa-circle-check"></i><div>E-waste recycling recovers <strong>gold, silver & copper</strong>.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHAT YOU CAN DO ===== -->
+<section class="section alt">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-hand-holding-heart"></i> Take Action</span>
+            <h2>What Can You Do Today?</h2>
+            <p>Real change starts with individual habits. Start with these four simple actions.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background: #3b82f6; box-shadow: 0 10px 22px rgba(59,130,246,0.3);"><i class="fa-solid fa-trash-can"></i></div>
+                    <h4>Segregate</h4>
+                    <p>Keep separate bins for wet, dry and hazardous waste at home.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num"><i class="fa-solid fa-seedling"></i></div>
+                    <h4>Compost</h4>
+                    <p>Start a simple compost pit to convert kitchen waste into garden gold.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background: #f59e0b; box-shadow: 0 10px 22px rgba(245,158,11,0.3);"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h4>Spread Awareness</h4>
+                    <p>Teach family and friends the right way to sort their waste.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background: #8b5cf6; box-shadow: 0 10px 22px rgba(139,92,246,0.3);"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>Participate</h4>
+                    <p>Join local clean-up drives and community composting groups.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

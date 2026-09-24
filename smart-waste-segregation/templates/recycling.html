@@ -1,189 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Recycling Works - EcoSort</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/"><i class="fa-solid fa-recycle"></i> EcoSort</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <i class="fa-solid fa-bars" style="color: var(--gray-600);"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/education"><i class="fa-solid fa-book"></i> Learn</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/recycling"><i class="fa-solid fa-arrows-spin"></i> Recycling</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/stats"><i class="fa-solid fa-chart-simple"></i> Stats</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends "base.html" %}
+{% block title %}How Recycling Works | EcoSort{% endblock %}
 
-    <div class="hero" style="padding: 3rem 0 4rem;">
-        <div class="container text-center">
-            <h1>How Recycling Works</h1>
-            <p>Step-by-step guide to the recycling process for different materials</p>
-        </div>
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding: 90px 0;">
+    <div class="hero-bubble b1"></div>
+    <div class="hero-bubble b2"></div>
+    <div class="container text-center position-relative">
+        <span class="eyebrow"><i class="fa-solid fa-arrows-spin"></i> Recycling</span>
+        <h1>How Recycling Works.<br><span class="grad">Waste → New Life.</span></h1>
+        <p class="hero-lead">Have you ever wondered what happens to a bottle after you put it in the blue bin? Follow the full journey of these six materials.</p>
     </div>
+</section>
 
-    <div class="container mt-5">
-        <!-- Paper -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-newspaper" style="color: var(--blue-500);"></i> Paper Recycling</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collection & Sorting</h6><p>Paper collected and sorted by type. Contaminated paper removed.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Pulping</h6><p>Paper mixed with water and chemicals to break into fibers, creating pulp.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Cleaning & De-inking</h6><p>Pulp screened to remove staples, tape, and ink. Uses 70% less energy.</p></div></div>
+<!-- ===== MATERIALS ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-arrow-rotate-right"></i> The Journey</span>
+            <h2>From Your Bin to a New Product</h2>
+            <p>Each material has its own recycling path. Here's exactly how six everyday materials are reborn.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- PAPER -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-newspaper" style="color:#3b82f6;"></i> Paper Recycling</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collection & Sorting</h6><p>Paper collected and sorted by type. Contaminated paper is removed.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Pulping</h6><p>Paper is mixed with water and chemicals to break into fibres.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Cleaning & De-inking</h6><p>Pulp is screened to remove ink, staples and tape — using 70% less energy.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>New Paper</h6><p>Clean fibres are pressed and dried into fresh notebooks, boxes and packaging.</p></div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Bleaching</h6><p>Pulp bleached for whiteness and refined for fiber bonding.</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Paper Making</h6><p>Pulp sprayed on mesh, pressed and dried to form new paper.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>Distribution</h6><p>New paper becomes notebooks, boxes, or packaging.</p></div></div>
-                    </div>
+                    <div class="tip green"><i class="fa-solid fa-lightbulb"></i><span><strong>Fact:</strong> One tonne of recycled paper saves 17 trees and 26,500 litres of water.</span></div>
                 </div>
-                <div class="alert alert-success mt-3"><i class="fa-solid fa-lightbulb"></i> <strong>Fact:</strong> Recycling 1 tonne of paper saves 17 trees and 26,500 liters of water.</div>
+            </div>
+
+            <!-- PLASTIC -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-bottle-water" style="color:#f59e0b;"></i> Plastic Recycling</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collection & Sorting</h6><p>Plastic sorted by type — PET, HDPE, PVC — each has its own path.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Shredding & Washing</h6><p>Plastic is shredded into flakes and washed to remove labels and residue.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Melt & Pelletize</h6><p>Flakes are melted, filtered and formed into uniform plastic pellets.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>New Products</h6><p>Pellets become bottles, clothing, carpet and even park benches.</p></div>
+                        </div>
+                    </div>
+                    <div class="tip warn"><i class="fa-solid fa-triangle-exclamation"></i><span><strong>Heads up:</strong> Only about 9% of all plastic ever made has been recycled.</span></div>
+                </div>
+            </div>
+
+            <!-- GLASS -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-wine-bottle" style="color:#8b5cf6;"></i> Glass Recycling</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collection</h6><p>Bottles and jars collected — empty but not necessarily spotless.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Sorting by Colour</h6><p>Sorted into clear, green and brown streams, each recycled separately.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Crushing to Cullet</h6><p>Glass crushed into small pieces; metal rings removed by magnets.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>Re-melting</h6><p>Cullet melted at ~1500°C and blown into brand-new bottles.</p></div>
+                        </div>
+                    </div>
+                    <div class="tip green"><i class="fa-solid fa-lightbulb"></i><span><strong>Fact:</strong> One recycled jar powers a light bulb for 4 hours; glass is infinitely recyclable.</span></div>
+                </div>
+            </div>
+
+            <!-- METAL -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-can" style="color:#3b82f6;"></i> Metal (Aluminium & Steel)</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collection & Sorting</h6><p>Aluminium and steel separated using powerful magnets.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Shredding</h6><p>Metal shredded to increase surface area for efficient melting.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Melting</h6><p>Aluminium melts at 660°C, steel at 1370°C — using 95% less energy!</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>New Products</h6><p>Recycled aluminium becomes new cans in ~60 days. Steel becomes cars.</p></div>
+                        </div>
+                    </div>
+                    <div class="tip green"><i class="fa-solid fa-lightbulb"></i><span><strong>Fact:</strong> One recycled can saves enough energy to run a TV for 3 hours.</span></div>
+                </div>
+            </div>
+
+            <!-- E-WASTE -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-microchip" style="color:#ef4444;"></i> E-Waste Recycling</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collection & Dismantling</h6><p>E-waste manually dismantled; hazardous components removed first.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Data Destruction</h6><p>All storage devices securely wiped or physically destroyed.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Metal Recovery</h6><p>Gold, silver and copper extracted — circuit boards hold up to 800x more gold than ore.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>Sustainable Treatment</h6><p>Lead and mercury safely contained; remaining materials become raw resources.</p></div>
+                        </div>
+                    </div>
+                    <div class="tip danger"><i class="fa-solid fa-skull-crossbones"></i><span><strong>Warning:</strong> Never burn or dump e-waste — always use authorised recyclers.</span></div>
+                </div>
+            </div>
+
+            <!-- COMPOSTING -->
+            <div class="col-lg-6">
+                <div class="process-card">
+                    <div class="process-card-head"><i class="fa-solid fa-seedling" style="color:#10b981;"></i> Home Composting</div>
+                    <div class="process-list">
+                        <div class="process-step">
+                            <div class="step-dot">1</div>
+                            <div><h6>Collect Kitchen Waste</h6><p>Peels, fruit scraps, tea leaves. Avoid meat and dairy for home bins.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">2</div>
+                            <div><h6>Layer with Dry Waste</h6><p>Mix greens with browns (leaves, cardboard) in a 1:2 ratio.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">3</div>
+                            <div><h6>Maintain & Turn</h6><p>Keep it moist and turn every 2–3 weeks to supply oxygen.</p></div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-dot">4</div>
+                            <div><h6>Use in Your Garden</h6><p>In 2–3 months you get dark, crumbly compost — free natural fertiliser.</p></div>
+                        </div>
+                    </div>
+                    <div class="tip green"><i class="fa-solid fa-lightbulb"></i><span><strong>Benefit:</strong> Cuts household waste by up to 50% and enriches your soil.</span></div>
+                </div>
             </div>
         </div>
 
-        <!-- Plastic -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-bottle-water" style="color: var(--blue-500);"></i> Plastic Recycling</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collection & Sorting</h6><p>Plastic sorted by type (PET, HDPE, PVC). Each has different recycling paths.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Shredding & Washing</h6><p>Plastic shredded into flakes and washed to remove labels and residue.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Melt Filtration</h6><p>Flakes melted and filtered. Formed into pellets called nurdles.</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Pelletizing</h6><p>Molten plastic formed into strands, cooled, and cut into uniform pellets.</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Manufacturing</h6><p>Pellets molded into bottles, containers, fibers, park benches.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>New Products</h6><p>Recycled plastic becomes carpet, clothing, furniture, new bottles.</p></div></div>
-                    </div>
-                </div>
-                <div class="alert alert-warning mt-3"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Important:</strong> Only 9% of all plastic ever made has been recycled.</div>
-            </div>
+        <!-- HIERARCHY -->
+        <div class="section-head" style="margin-top: 60px;">
+            <span class="tag"><i class="fa-solid fa-layer-group"></i> Priority</span>
+            <h2>Waste Management Hierarchy</h2>
+            <p>The best waste is the waste that is never created. Here's what matters most, in order.</p>
         </div>
+        <ul class="hierarchy">
+            <li style="background:#10b981;">1 · Prevention <small>Don't create waste</small></li>
+            <li style="background:#3b82f6;">2 · Reduction <small>Use less, waste less</small></li>
+            <li style="background:#8b5cf6;">3 · Reuse <small>Use again before discarding</small></li>
+            <li style="background:#f59e0b;">4 · Recycling <small>Convert to new products</small></li>
+            <li style="background:#ef4444;">5 · Disposal <small>Landfill — last resort only</small></li>
+        </ul>
 
-        <!-- Glass -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-wine-glass" style="color: var(--purple-500);"></i> Glass Recycling</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collection</h6><p>Glass bottles collected. Empty but not perfectly clean needed.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Sorting by Color</h6><p>Sorted: clear, green, brown. Different colors recycled separately.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Crushing to Cullet</h6><p>Glass crushed into small pieces. Metal rings removed by magnets.</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Melting</h6><p>Cullet melted at 1500°C. Uses 30% less energy than raw materials.</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Forming</h6><p>Molten glass blown into new bottles. Slowly cooled to prevent cracking.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>Quality Check</h6><p>Bottles inspected, filled, and sent to stores. Can recycle in 30 days!</p></div></div>
-                    </div>
-                </div>
-                <div class="alert alert-success mt-3"><i class="fa-solid fa-lightbulb"></i> <strong>Fact:</strong> Recycling one glass jar saves enough energy to power a light bulb for 4 hours.</div>
-            </div>
-        </div>
-
-        <!-- Metal -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-can" style="color: var(--orange-500);"></i> Metal (Aluminum & Steel) Recycling</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collection & Sorting</h6><p>Aluminum and steel separated using magnets.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Shredding</h6><p>Metal shredded to increase surface area for melting.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Melting</h6><p>Aluminum melts at 660°C, steel at 1370°C. Uses 95% less energy!</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Purification</h6><p>Molten metal purified to remove impurities and meet quality standards.</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Casting</h6><p>Metal cast into ingots or billets for manufacturing.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>New Products</h6><p>Recycled aluminum becomes new cans in 60 days! Steel becomes cars.</p></div></div>
-                    </div>
-                </div>
-                <div class="alert alert-success mt-3"><i class="fa-solid fa-lightbulb"></i> <strong>Fact:</strong> Recycling one aluminum can saves enough energy to run your TV for 3 hours.</div>
-            </div>
-        </div>
-
-        <!-- E-waste -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-microchip" style="color: var(--red-500);"></i> E-Waste Recycling</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collection & Dismantling</h6><p>E-waste manually dismantled. Hazardous components removed first.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Data Destruction</h6><p>All data devices securely wiped or physically destroyed.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Shredding</h6><p>Components shredded. Magnets separate metals, plastics, ceramics.</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Metal Recovery</h6><p>Gold, silver, platinum extracted. Circuit boards have 40-800x more gold than ore!</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Hazardous Treatment</h6><p>Lead, mercury safely contained and disposed per regulations.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>Material Recovery</h6><p>Copper, aluminum, steel become raw materials for new products.</p></div></div>
-                    </div>
-                </div>
-                <div class="alert alert-danger mt-3"><i class="fa-solid fa-skull-crossbones"></i> <strong>Warning:</strong> Never burn or dump e-waste! Always use authorized recyclers.</div>
-            </div>
-        </div>
-
-        <!-- Composting -->
-        <div class="card mb-4">
-            <div class="card-header"><h5><i class="fa-solid fa-seedling" style="color: var(--green-500);"></i> Home Composting</h5></div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">1</div><div class="step-content"><h6>Collect Kitchen Waste</h6><p>Gather vegetable peels, fruit scraps, tea leaves. Avoid meat, dairy.</p></div></div>
-                        <div class="process-step"><div class="step-number">2</div><div class="step-content"><h6>Layer with Dry Waste</h6><p>Mix green waste with brown (leaves, cardboard) in 1:2 ratio.</p></div></div>
-                        <div class="process-step"><div class="step-number">3</div><div class="step-content"><h6>Maintain Moisture</h6><p>Keep moist like wrung-out sponge. Too dry slows, too wet smells.</p></div></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="process-step"><div class="step-number">4</div><div class="step-content"><h6>Turn Regularly</h6><p>Mix every 2-3 weeks for oxygen. Speeds decomposition.</p></div></div>
-                        <div class="process-step"><div class="step-number">5</div><div class="step-content"><h6>Wait 2-3 Months</h6><p>Temperature rises as microbes work. Pile darkens and reduces.</p></div></div>
-                        <div class="process-step"><div class="step-number">6</div><div class="step-content"><h6>Use in Garden</h6><p>Finished compost is dark, crumbly, smells like forest soil!</p></div></div>
-                    </div>
-                </div>
-                <div class="alert alert-success mt-3"><i class="fa-solid fa-lightbulb"></i> <strong>Benefits:</strong> Reduces landfill waste, enriches soil, eliminates chemical fertilizers.</div>
-            </div>
-        </div>
-
-        <!-- Waste Hierarchy -->
-        <div class="card mb-5">
-            <div class="card-body p-4">
-                <h4 class="text-center mb-4"><i class="fa-solid fa-layer-group"></i> Waste Management Hierarchy</h4>
-                <div style="max-width: 500px; margin: 0 auto;">
-                    <div style="background: var(--green-500); color: white; padding: 12px 16px; border-radius: 8px 8px 0 0; font-weight: 600; text-align: center;">
-                        1. Prevention - Don't create waste
-                    </div>
-                    <div style="background: var(--blue-500); color: white; padding: 12px 16px; margin-top: 2px; font-weight: 600; text-align: center;">
-                        2. Reduction - Use less, waste less
-                    </div>
-                    <div style="background: var(--purple-500); color: white; padding: 12px 16px; margin-top: 2px; font-weight: 600; text-align: center;">
-                        3. Reuse - Use again before discarding
-                    </div>
-                    <div style="background: var(--orange-500); color: white; padding: 12px 16px; margin-top: 2px; font-weight: 600; text-align: center;">
-                        4. Recycling - Convert to new products
-                    </div>
-                    <div style="background: var(--red-500); color: white; padding: 12px 16px; border-radius: 0 0 8px 8px; margin-top: 2px; font-weight: 600; text-align: center;">
-                        5. Disposal - Landfill (last resort)
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-bottom">EcoSort | Conservation of Natural Resources | 2026</div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}
