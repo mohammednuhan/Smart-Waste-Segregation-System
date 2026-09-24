@@ -1,161 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - EcoSort</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/"><i class="fa-solid fa-recycle"></i> EcoSort</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <i class="fa-solid fa-bars" style="color: var(--gray-600);"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/education"><i class="fa-solid fa-book"></i> Learn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/recycling"><i class="fa-solid fa-arrows-spin"></i> Recycling</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/stats"><i class="fa-solid fa-chart-simple"></i> Stats</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
-                </ul>
+{% extends "base.html" %}
+{% block title %}About the Project | EcoSort{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding: 90px 0;">
+    <div class="hero-bubble b1"></div>
+    <div class="hero-bubble b2"></div>
+    <div class="container text-center position-relative">
+        <span class="eyebrow"><i class="fa-solid fa-circle-info"></i> About</span>
+        <h1>Smart Waste Segregation.<br><span class="grad">Built for a Sustainable India.</span></h1>
+        <p class="hero-lead">EcoSort is an AI-powered waste classification system developed as part of the Conservation of Natural Resources course — bringing proper waste management to every household.</p>
+    </div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#10b981;"><i class="fa-solid fa-clipboard-list"></i></div>
+                        <h5>Project Overview</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-book"></i><div><strong>Subject:</strong> Conservation of Natural Resources</div></li>
+                            <li><i class="fa-solid fa-calendar"></i><div><strong>Year:</strong> 2026</div></li>
+                            <li><i class="fa-solid fa-laptop-code"></i><div><strong>Type:</strong> Web Application</div></li>
+                            <li><i class="fa-solid fa-users"></i><div><strong>Audience:</strong> The general public</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#3b82f6;"><i class="fa-solid fa-bullseye"></i></div>
+                        <h5>Objective & Problem Statement</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p style="margin-bottom: 14px;"><strong>Objective:</strong> To develop an intelligent system that helps users correctly classify waste into proper categories (wet/organic, dry/recyclable, hazardous) with clear disposal and recycling guidance.</p>
+                        <p style="margin-bottom: 10px;"><strong>The Problem:</strong> India generates approximately <strong>62 million tonnes of waste annually</strong>, yet only ~75–80% is even collected — and a large share isn't segregated. This leads to:</p>
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-earth-asia"></i><div>Environmental pollution & groundwater contamination</div></li>
+                            <li><i class="fa-solid fa-fire"></i><div>Health hazards from burning unsegregated waste</div></li>
+                            <li><i class="fa-solid fa-temperature-high"></i><div>Greenhouse gas emissions from landfills</div></li>
+                            <li><i class="fa-solid fa-fish"></i><div>Marine ecosystems threatened by plastic waste</div></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <div class="hero" style="padding: 3rem 0 4rem;">
-        <div class="container text-center">
-            <h1>About This Project</h1>
-            <p>Smart Waste Segregation & Recycling Recommendation System</p>
+<!-- ===== TECH STACK ===== -->
+<section class="section alt">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-microchip"></i> Technology</span>
+            <h2>Built with Modern, Reliable Tools</h2>
+            <p>A clean, production-style stack — from intelligent data matching to a responsive, dark-ready interface.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background:#3b82f6; box-shadow: 0 10px 22px rgba(59,130,246,0.3);"><i class="fa-brands fa-python"></i></div>
+                    <h4>Python 3</h4>
+                    <p>Clean backend logic powering intelligent waste classification.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num"><i class="fa-solid fa-server"></i></div>
+                    <h4>Flask</h4>
+                    <p>Lightweight, fast and production-proven web framework.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background:#8b5cf6; box-shadow: 0 10px 22px rgba(139,92,246,0.3);"><i class="fa-solid fa-database"></i></div>
+                    <h4>SQLite</h4>
+                    <p>Reliable local storage for logs and usage statistics.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="step-card">
+                    <div class="step-num" style="background:#f59e0b; box-shadow: 0 10px 22px rgba(245,158,11,0.3);"><i class="fa-solid fa-globe"></i></div>
+                    <h4>HTML · CSS · JS</h4>
+                    <p>Modern, responsive interface with smooth interactions.</p>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="container mt-5">
+<!-- ===== FEATURES ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-star"></i> What It Does</span>
+            <h2>Key Features</h2>
+            <p>Everything you need to segregate waste correctly and spread the habit.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#10b981;"><i class="fa-solid fa-brain"></i></div>
+                        <h5>Instant Classification</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>A database of <strong>85+ everyday items</strong> across 5 categories. Just type, and get the answer instantly — no waiting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#3b82f6;"><i class="fa-solid fa-list-check"></i></div>
+                        <h5>Disposal Guidance</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Each item comes with the correct bin colour, disposal method and a step-by-step recycling process.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#f59e0b;"><i class="fa-solid fa-chart-column"></i></div>
+                        <h5>Impact Tracking</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Every classification is logged, so you can see real usage statistics and which items people search most.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#8b5cf6;"><i class="fa-solid fa-book-open"></i></div>
+                        <h5>Educational Content</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Learn the SWM Rules 2016, understand waste types and discover how recycling actually works.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#10b981;"><i class="fa-solid fa-leaf"></i></div>
+                        <h5>Environmentally Aligned</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Guidance grounded in CPCB and Ministry of Environment recommendations for responsible disposal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="info-card">
+                    <div class="info-card-head">
+                        <div class="ic-icon" style="background:#ef4444;"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <h5>Mobile Friendly</h5>
+                    </div>
+                    <div class="info-card-body">
+                        <p>Fully responsive design — use it from your phone in the kitchen, anywhere, anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FUTURE ===== -->
+<section class="section alt">
+    <div class="container">
+        <div class="cta-band" style="background: radial-gradient(900px 400px at 50% -10%, rgba(139,92,246,0.35), transparent 60%), linear-gradient(135deg, #052e16, #064e3b 55%, #065f46);">
+            <h2>Where We're Heading</h2>
+            <p style="max-width: 640px;">
+                <i class="fa-solid fa-camera"></i> Image recognition for waste identification ·
+                <i class="fa-solid fa-robot"></i> Machine-learning accuracy improvements ·
+                <i class="fa-solid fa-user"></i> Personal accounts & tracking ·
+                <i class="fa-solid fa-truck"></i> Local collection schedule integration
+            </p>
+            <a href="/#classify" class="btn-white"><i class="fa-solid fa-rocket"></i> Try EcoSort Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== REFERENCES ===== -->
+<section class="section" style="padding: 56px 0;">
+    <div class="container">
+        <div class="section-head">
+            <span class="tag"><i class="fa-solid fa-bookmark"></i> Sources</span>
+            <h2>References</h2>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-clipboard-list" style="color: var(--blue-600);"></i> Project Overview</h5></div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p style="font-size: 0.9rem;"><strong>Subject:</strong> Conservation of Natural Resources</p>
-                                <p style="font-size: 0.9rem;"><strong>Year:</strong> 2026</p>
-                                <p style="font-size: 0.9rem;"><strong>Type:</strong> Web Application</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p style="font-size: 0.9rem;"><strong>Technologies:</strong> Python, Flask, SQLite, HTML/CSS/JS</p>
-                                <p style="font-size: 0.9rem;"><strong>Target Users:</strong> General public, households</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-bullseye" style="color: var(--blue-600);"></i> Objective</h5></div>
-                    <div class="card-body">
-                        <p style="font-size: 0.9rem;">To develop an AI-powered system that helps users properly classify waste into appropriate categories (wet/organic, dry/recyclable, hazardous) and provides recommendations for proper disposal and recycling.</p>
-                    </div>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-circle-question" style="color: var(--blue-600);"></i> Problem Statement</h5></div>
-                    <div class="card-body">
-                        <p style="font-size: 0.9rem;">India generates approximately <strong>62 million tonnes of waste annually</strong>, and only about 75-80% gets collected. Improper waste segregation is a major issue.</p>
-                        <ul style="font-size: 0.9rem;">
-                            <li>Environmental pollution and groundwater contamination</li>
-                            <li>Health hazards from burning waste</li>
-                            <li>Greenhouse gas emissions from landfills</li>
-                            <li>Marine life affected by plastic pollution</li>
+                <div class="info-card">
+                    <div class="info-card-body">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-book"></i><div>Ministry of Environment, Forest and Climate Change — <strong>Solid Waste Management Rules 2016</strong></div></li>
+                            <li><i class="fa-solid fa-globe"></i><div>Central Pollution Control Board (CPCB) — <a href="https://cpcb.nic.in" target="_blank" style="color: var(--green-600); font-weight:600;">cpcb.nic.in</a></div></li>
+                            <li><i class="fa-solid fa-earth-americas"></i><div>UNEP — Waste Management and Resource Efficiency resources</div></li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-microchip" style="color: var(--blue-600);"></i> Technology Stack</h5></div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6><i class="fa-solid fa-server" style="color: var(--blue-500);"></i> Backend</h6>
-                                <ul style="font-size: 0.85rem;">
-                                    <li>Python 3.x</li>
-                                    <li>Flask Framework</li>
-                                    <li>SQLite Database</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h6><i class="fa-solid fa-palette" style="color: var(--blue-500);"></i> Frontend</h6>
-                                <ul style="font-size: 0.85rem;">
-                                    <li>HTML5, CSS3, JavaScript</li>
-                                    <li>Bootstrap 5</li>
-                                    <li>Font Awesome Icons</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-star" style="color: var(--blue-600);"></i> Key Features</h5></div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul style="font-size: 0.85rem;">
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Real-time waste classification</li>
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Detailed recycling instructions</li>
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Environmental impact info</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul style="font-size: 0.85rem;">
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Usage statistics tracking</li>
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Educational content</li>
-                                    <li><i class="fa-solid fa-check" style="color: var(--green-500); margin-right: 0.5rem;"></i> Responsive design</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-rocket" style="color: var(--blue-600);"></i> Future Enhancements</h5></div>
-                    <div class="card-body">
-                        <ul style="font-size: 0.9rem;">
-                            <li>Image recognition for waste identification</li>
-                            <li>Machine learning for better accuracy</li>
-                            <li>User accounts for personalized tracking</li>
-                            <li>Integration with local waste collection schedules</li>
-                            <li>Multi-language support</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card mb-4">
-                    <div class="card-header"><h5><i class="fa-solid fa-bookmark" style="color: var(--blue-600);"></i> References</h5></div>
-                    <div class="card-body">
-                        <ol style="font-size: 0.9rem;">
-                            <li>Ministry of Environment, Forest and Climate Change - Solid Waste Management Rules 2016</li>
-                            <li>Central Pollution Control Board (CPCB) - <a href="https://cpcb.nic.in" target="_blank">cpcb.nic.in</a></li>
-                            <li>UNEP - Waste Management Resources</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="text-center mb-5">
-                    <a href="/" class="btn btn-primary me-2"><i class="fa-solid fa-magnifying-glass"></i> Try the System</a>
-                    <a href="/education" class="btn btn-outline-primary"><i class="fa-solid fa-book"></i> Learn More</a>
+                <div style="text-align:center; margin-top: 26px;">
+                    <a href="/#classify" class="btn-eco"><i class="fa-solid fa-magnifying-glass"></i> Try the System</a>
+                    <a href="/education" class="btn-eco-outline" style="margin-left: 10px;"><i class="fa-solid fa-book-open"></i> Learn More</a>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-bottom">EcoSort | Conservation of Natural Resources | 2026</div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}
