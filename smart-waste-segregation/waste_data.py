@@ -664,31 +664,28 @@ def get_all_items():
 def search_items(query):
     query_lower = query.lower().strip()
     results = []
-    
+
+    def make_entry(item_key, category_key, category_data, item_data):
+        return {
+            "name": item_key,
+            "category": category_key,
+            "category_name": category_data["name"],
+            "color": category_data["color"],
+            "icon": category_data.get("icon", "circle-question"),
+            "bin_color": category_data.get("bin_color", ""),
+            "data": item_data
+        }
+
     # Exact match first
     for category_key, category_data in WASTE_DATABASE.items():
         for item_key, item_data in category_data["items"].items():
             if item_key == query_lower:
-                return [{
-                    "name": item_key,
-                    "category": category_key,
-                    "category_name": category_data["name"],
-                    "color": category_data["color"],
-                    "bin_color": category_data.get("bin_color", ""),
-                    "data": item_data
-                }]
-    
+                return [make_entry(item_key, category_key, category_data, item_data)]
+
     # Partial match
     for category_key, category_data in WASTE_DATABASE.items():
         for item_key, item_data in category_data["items"].items():
             if query_lower in item_key or item_key in query_lower:
-                results.append({
-                    "name": item_key,
-                    "category": category_key,
-                    "category_name": category_data["name"],
-                    "color": category_data["color"],
-                    "bin_color": category_data.get("bin_color", ""),
-                    "data": item_data
-                })
-    
+                results.append(make_entry(item_key, category_key, category_data, item_data))
+
     return results[:10]
