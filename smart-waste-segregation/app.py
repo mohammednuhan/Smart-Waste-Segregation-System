@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template, request, jsonify
 import sqlite3
+import os
 from datetime import datetime
 from waste_data import WASTE_DATABASE, search_items
 
@@ -15,6 +16,7 @@ app.secret_key = 'ecosort-waste-project-2026'
 # ============================================================
 
 def init_db():
+    os.makedirs('data', exist_ok=True)
     conn = sqlite3.connect('data/waste_tracker.db')
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS waste_logs (
@@ -54,6 +56,7 @@ def classify_waste(item_name):
             "color": item["color"],
             "bin_color": item.get("bin_color", "General Waste"),
             "item_name": item["name"].title(),
+            "icon": item.get("icon", "circle-question"),
             "description": item["data"]["description"],
             "recycling_method": item["data"]["recycling_method"],
             "decomposition_time": item["data"]["decomposition_time"],
