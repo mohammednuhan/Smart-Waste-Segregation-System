@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
 import os
+import threading
 from datetime import datetime
 from waste_data import WASTE_DATABASE, search_items
 
@@ -12,34 +13,92 @@ app.secret_key = 'ecosort-waste-project-2026'
 
 
 # ============================================================
-# DATABASE
+# DATABASE (SQLite with in-memory fallback for read-only hosts)
 # ============================================================
 
+# In-memory store used when the filesystem is read-only (e.g. Vercel).
+_memory_lock = threading.Lock()
+_memory_logs = []  # list of (item_name, category, sub_category, recommendation, date_added)
+
+
 def init_db():
-    os.makedirs('data', exist_ok=True)
-    conn = sqlite3.connect('data/waste_tracker.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS waste_logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        item_name TEXT,
-        category TEXT,
-        sub_category TEXT,
-        recommendation TEXT,
-        date_added TEXT
-    )''')
-    c.execute('''CREATE TABLE IF NOT EXISTS user_stats (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        total_items INTEGER DEFAULT 0,
-        organic_count INTEGER DEFAULT 0,
-        recyclable_count INTEGER DEFAULT 0,
-        hazardous_count INTEGER DEFAULT 0,
-        other_count INTEGER DEFAULT 0
-    )''')
-    c.execute("SELECT count(*) FROM user_stats")
-    if c.fetchone()[0] == 0:
-        c.execute("INSERT INTO user_stats DEFAULT VALUES")
-    conn.commit()
-    conn.close()
+    try:
+        os.makedirs('data', exist_ok=True)
+        conn = sqlite3.connect('data/waste_tracker.db')
+        c = conn.cursor()
+        c.execute('''CREATE TABLE IF NOT EXISTS waste_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            item_name TEXT,
+            category TEXT,
+            sub_category TEXT,
+            recommendation TEXT,
+            date_added TEXT
+        )''')
+        c.execute('''CREATE TABLE IF NOT EXISTS user_stats (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            total_items INTEGER DEFAULT 0,
+            organic_count INTEGER DEFAULT 0,
+            recyclable_count INTEGER DEFAULT 0,
+            hazardous_count INTEGER DEFAULT 0,
+            other_count INTEGER DEFAULT 0
+        )''')
+        c.execute("SELECT count(*) FROM user_stats")
+        if c.fetchone()[0] == 0:
+            c.execute("INSERT INTO user_stats DEFAULT VALUES")
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print("DB init skipped (read-only host):", e)
+
+
+def log_classification(item_name, category_key, sub_category, recommendation, date_added):
+    """Store a classification. Tries SQLite; falls back to in-memory."""
+    stored = False
+    try:
+        conn = sqlite3.connect('data/waste_tracker.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO waste_logs (item_name, category, sub_category, recommendation, date_added) VALUES (?, ?, ?, ?, ?)",
+                  (item_name, category_key, sub_category, recommendation, date_added))
+        conn.commit()
+        conn.close()
+        stored = True
+    except Exception as e:
+        print("SQLite write unavailable:", e)
+    if not stored:
+        with _memory_lock:
+            _memory_logs.append((item_name, category_key, sub_category, recommendation, date_added))
+
+
+def fetch_stats():
+    """Return (total, category_counts, recent_items, common_items) from SQLite or memory."""
+    try:
+        conn = sqlite3.connect('data/waste_tracker.db')
+        c = conn.cursor()
+        c.execute("SELECT category, COUNT(*) FROM waste_logs GROUP BY category")
+        category_counts = dict(c.fetchall())
+        c.execute("SELECT COUNT(*) FROM waste_logs")
+        total = c.fetchone()[0]
+        c.execute("SELECT item_name, category, date_added FROM waste_logs ORDER BY id DESC LIMIT 10")
+        recent_items = c.fetchall()
+        c.execute("SELECT item_name, COUNT(*) as cnt FROM waste_logs GROUP BY item_name ORDER BY cnt DESC LIMIT 5")
+        common_items = c.fetchall()
+        conn.close()
+        return total, category_counts, recent_items, common_items
+    except Exception:
+        with _memory_lock:
+            rows = list(_memory_logs) if _memory_logs else []
+        if not rows:
+            return 0, {}, [], []
+        category_counts = {}
+        total = len(rows)
+        for row in rows:
+            category_counts[row[1]] = category_counts.get(row[1], 0) + 1
+        recent_items = [(r[0], r[1], r[4]) for r in reversed(rows[-10:])]
+        item_tally = {}
+        for r in rows:
+            item_tally[r[0]] = item_tally.get(r[0], 0) + 1
+        common_items = sorted(item_tally.items(), key=lambda x: x[1], reverse=True)[:5]
+        return total, category_counts, recent_items, common_items
 
 
 # ============================================================
@@ -117,24 +176,8 @@ def presentation():
 @app.route('/stats')
 def stats():
     try:
-        conn = sqlite3.connect('data/waste_tracker.db')
-        c = conn.cursor()
-        
-        c.execute("SELECT category, COUNT(*) FROM waste_logs GROUP BY category")
-        category_counts = dict(c.fetchall())
-        
-        c.execute("SELECT COUNT(*) FROM waste_logs")
-        total = c.fetchone()[0]
-        
-        c.execute("SELECT item_name, category, date_added FROM waste_logs ORDER BY id DESC LIMIT 10")
-        recent_items = c.fetchall()
-        
-        c.execute("SELECT item_name, COUNT(*) as cnt FROM waste_logs GROUP BY item_name ORDER BY cnt DESC LIMIT 5")
-        common_items = c.fetchall()
-        
-        conn.close()
-        
-        return render_template('stats.html', 
+        total, category_counts, recent_items, common_items = fetch_stats()
+        return render_template('stats.html',
                              total=total,
                              category_counts=category_counts,
                              recent_items=recent_items,
@@ -153,14 +196,15 @@ def classify():
     
     if result:
         try:
-            conn = sqlite3.connect('data/waste_tracker.db')
-            c = conn.cursor()
-            c.execute("INSERT INTO waste_logs (item_name, category, sub_category, recommendation, date_added) VALUES (?, ?, ?, ?, ?)",
-                     (item_name, result["category_key"], result["item_name"], result["recycling_method"], datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-            conn.commit()
-            conn.close()
+            log_classification(
+                item_name,
+                result["category_key"],
+                result["item_name"],
+                result["recycling_method"],
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            )
         except Exception as e:
-            print("Database error:", e)
+            print("Log error:", e)
         
         return jsonify(result)
     else:
